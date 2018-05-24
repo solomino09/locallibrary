@@ -1,0 +1,26 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<h1>Libraries list</h1>
+
+{% if libraries_list %}
+  <ul>
+
+  {% for library in libraries_list %}
+    <li>
+      <a href="{{ library.get_absolute_url }}">
+      {{ library }}
+      </a>
+    </li>
+  {% endfor %}
+
+ </ul>
+{% else %}
+  <p>There are no libraries available.</p>
+{% endif %}
+        
+        
+        
+{% endblock %}
+
