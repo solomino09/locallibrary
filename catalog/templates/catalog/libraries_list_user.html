@@ -1,12 +1,10 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-
-<h1>Libraries list</h1>
+<h1>List for {{ user.get_username }}</h1>
 
 {% if libraries_list %}
   <ul>
-
 
        {% for library in libraries_list %}
         <li>
@@ -15,12 +13,15 @@
           </a>
         </li>
       {% endfor %}
-
-
- </ul>
 {% else %}
-  <p>There are no libraries available.</p>
+      <p>There are no library.</p>
+
 {% endif %}
+ </ul>
+
+
+
+
+
 
 {% endblock %}
-

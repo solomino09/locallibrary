@@ -28,7 +28,7 @@ def index(request):
         'index.html',
         context={'num_books':num_books,'num_instances':num_instances,'num_instances_available':num_instances_available,'num_authors':num_authors,
             'num_visits':num_visits, 'num_genre':num_genre, 'num_libraries':num_libraries},
-    )# TEST add counts of Genre
+    )
 
 
 
@@ -71,6 +71,19 @@ class AuthorDetailView(generic.DetailView):
     Generic class-based detail view for an author.
     """
     model = Author
+
+
+from django.contrib.auth.mixins import LoginRequiredMixin
+class LoanedLibrariesByUserListView(LoginRequiredMixin, generic.ListView):
+    """
+    Generic class-based view listing books on loan to current user.
+    """
+    model = Libraries
+    template_name = 'catalog/libraries_list_user.html'
+    paginate_by = 10
+
+    def get_queryset(self):
+        return Libraries.objects.filter(library=self.request.user)
 
 
 class LibrariesListView(generic.ListView):

@@ -26,6 +26,7 @@ admin.site.register(Author, AuthorAdmin)
 admin.site.register(Libraries)
 
 
+
 # Register the Admin classes for Book using the decorator
 
 class BooksInstanceInline(admin.TabularInline):

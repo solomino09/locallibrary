@@ -13,11 +13,15 @@ class Genre(models.Model):
         return self.name
 
 
+
+import uuid # Required for unique book instances
+from django.contrib.auth.models import User
 class Libraries(models.Model):
     """
     separation of the library
     """
     name = models.CharField(max_length=200, help_text="Entering one of the libraries (e.g. Scientific or children etc.)")
+    library = models.ManyToManyField(User, help_text='Select Users for this library') #Added for libraries
 
     def __str__(self):
         """

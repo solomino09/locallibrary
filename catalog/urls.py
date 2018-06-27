@@ -16,7 +16,7 @@ urlpatterns = [
 
 urlpatterns += [   
     path('mybooks/', views.LoanedBooksByUserListView.as_view(), name='my-borrowed'),
-    path(r'borrowed/', views.LoanedBooksAllListView.as_view(), name='all-borrowed'), #Added for challenge
+    path('borrowed/', views.LoanedBooksAllListView.as_view(), name='all-borrowed'), #Added for challenge
 ]
 
 # Add URLConf for librarian to renew a book.
@@ -37,4 +37,6 @@ urlpatterns += [
     path('book/<int:pk>/update/', views.BookUpdate.as_view(), name='book_update'),
     path('book/<int:pk>/delete/', views.BookDelete.as_view(), name='book_delete'),
 ]
-
+urlpatterns += [
+    path('mylibraries/', views.LoanedLibrariesByUserListView.as_view(), name='my-libraries'),   #Added for libraries
+]
